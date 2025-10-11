@@ -1,10 +1,12 @@
 # 🛒 Shopme E-Commerce
 
-A complete e-commerce system built with Java and Spring Boot, featuring a comprehensive admin panel and customer-facing shopping site.
+A complete e-commerce system built with Java and Spring Boot, featuring a
+comprehensive admin panel and customer-facing shopping site.
 
 ## 📋 Description
 
-Shopme is a professional full-stack e-commerce application consisting of two main applications:
+Shopme is a professional full-stack e-commerce application consisting of two
+main applications:
 
 - **ShopmeBackend (Admin)**: Administrative panel for managing the entire system
 - **ShopmeFrontend (Shopping)**: Customer-facing online store
@@ -12,7 +14,8 @@ Shopme is a professional full-stack e-commerce application consisting of two mai
 ## 🚀 Technologies
 
 ### Backend
-- Java 17
+
+- Java 21
 - Spring Boot 3.2.0
 - Spring Data JPA
 - Spring Security + JWT
@@ -22,6 +25,7 @@ Shopme is a professional full-stack e-commerce application consisting of two mai
 - Lombok
 
 ### Frontend
+
 - Thymeleaf Template Engine
 - Bootstrap 4
 - jQuery 3
@@ -71,13 +75,13 @@ ShopmeEcommerce/
 
 ```sql
 -- Backend database
-CREATE DATABASE shopmedb_backend 
-CHARACTER SET utf8mb4 
+CREATE DATABASE shopmedb_backend
+CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
 -- Frontend database (optional, can share the same)
-CREATE DATABASE shopmedb_frontend 
-CHARACTER SET utf8mb4 
+CREATE DATABASE shopmedb_frontend
+CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 ```
 
@@ -98,6 +102,7 @@ FLUSH PRIVILEGES;
 ## ⚙️ Installation & Setup
 
 ### Prerequisites
+
 - JDK 17 or higher
 - MySQL 8.0 or higher
 - Maven 3.6+
@@ -106,27 +111,32 @@ FLUSH PRIVILEGES;
 ### Step-by-Step Installation
 
 1. **Clone the repository:**
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/ShopmeEcommerce.git
 cd ShopmeEcommerce
 ```
 
 2. **Configure Database:**
-    - Execute the SQL scripts above to create databases and user
-    - Update `application.properties` files if needed
+
+   - Execute the SQL scripts above to create databases and user
+   - Update `application.properties` files if needed
 
 3. **Build the project:**
+
 ```bash
 mvn clean install
 ```
 
 4. **Run Backend Application:**
+
 ```bash
 cd ShopmeWebParent/ShopmeBackend
 mvn spring-boot:run
 ```
 
 5. **Run Frontend Application (in another terminal):**
+
 ```bash
 cd ShopmeWebParent/ShopmeFrontend
 mvn spring-boot:run
@@ -140,65 +150,67 @@ mvn spring-boot:run
 ## 📦 Features
 
 ### Admin Module (Backend)
+
 - [x] User Management
-    - Create, update, delete users
-    - Role-based access control
-    - User authentication & authorization
+  - Create, update, delete users
+  - Role-based access control
+  - User authentication & authorization
 - [ ] Category Management
-    - Hierarchical categories
-    - Enable/disable categories
+  - Hierarchical categories
+  - Enable/disable categories
 - [ ] Brand Management
-    - Brand CRUD operations
-    - Logo upload
+  - Brand CRUD operations
+  - Logo upload
 - [ ] Product Management
-    - Product catalog
-    - Multiple images per product
-    - Stock management
-    - Pricing & discounts
+  - Product catalog
+  - Multiple images per product
+  - Stock management
+  - Pricing & discounts
 - [ ] Customer Management
-    - Customer information
-    - Order history
+  - Customer information
+  - Order history
 - [ ] Order Management
-    - View and update order status
-    - Track shipments
-    - Handle customer inquiries
+  - View and update order status
+  - Track shipments
+  - Handle customer inquiries
 - [ ] Shipping Management
-    - Configure shipping methods
-    - Set shipping rates
-    - Delivery timeframes
+  - Configure shipping methods
+  - Set shipping rates
+  - Delivery timeframes
 - [ ] Sales Reports
-    - Revenue analytics
-    - Sales by category/product
-    - Export reports
+  - Revenue analytics
+  - Sales by category/product
+  - Export reports
 
 ### Shopping Module (Frontend)
+
 - [ ] Product Browsing
-    - Category navigation
-    - Product search
-    - Filtering & sorting
+  - Category navigation
+  - Product search
+  - Filtering & sorting
 - [ ] Product Details
-    - Images gallery
-    - Description & specifications
-    - Customer reviews
+  - Images gallery
+  - Description & specifications
+  - Customer reviews
 - [ ] Shopping Cart
-    - Add/remove items
-    - Update quantities
-    - Calculate totals
+  - Add/remove items
+  - Update quantities
+  - Calculate totals
 - [ ] Checkout Process
-    - Shipping information
-    - Payment integration
-    - Order confirmation
+  - Shipping information
+  - Payment integration
+  - Order confirmation
 - [ ] Customer Account
-    - Registration & login
-    - Profile management
-    - Order history
+  - Registration & login
+  - Profile management
+  - Order history
 - [ ] Order Tracking
-    - Track shipment status
-    - Estimated delivery date
+  - Track shipment status
+  - Estimated delivery date
 - [ ] Product Reviews
-    - Rate products
-    - Write reviews
-    - View ratings
+  - Rate products
+  - Write reviews
+  - View ratings
 
 ## 🔐 Security
 
@@ -211,16 +223,19 @@ mvn spring-boot:run
 ## 🧪 Testing
 
 ### Run all tests:
+
 ```bash
 mvn test
 ```
 
 ### Run specific test class:
+
 ```bash
 mvn test -Dtest=UserRepositoryTests
 ```
 
 ### Run specific test method:
+
 ```bash
 mvn test -Dtest=UserRepositoryTests#testCreateUser
 ```
@@ -233,14 +248,15 @@ The project uses a multi-module Maven structure:
 
 - **ShopmeCommon**: Shared entities and utilities
 - **ShopmeWebParent**: Common web dependencies
-    - **ShopmeBackend**: Admin application
-    - **ShopmeFrontend**: Shopping application
+  - **ShopmeBackend**: Admin application
+  - **ShopmeFrontend**: Shopping application
 
 ### Database Schema
 
 The application uses Hibernate with `ddl-auto=update` for development.
 
 Main entities:
+
 - User (users table)
 - Role (roles table)
 - Category (categories table)
@@ -293,6 +309,7 @@ orders ─────── order_tracks
 ### Production Configuration
 
 1. Update `application.properties`:
+
 ```properties
 # Change to 'validate' or 'none' in production
 spring.jpa.hibernate.ddl-auto=validate
@@ -305,11 +322,13 @@ spring.thymeleaf.cache=true
 ```
 
 2. Build production JAR:
+
 ```bash
 mvn clean package -Pprod
 ```
 
 3. Run the application:
+
 ```bash
 java -jar ShopmeBackend/target/ShopmeBackend-1.0.jar
 java -jar ShopmeFrontend/target/ShopmeFrontend-1.0.jar
@@ -345,11 +364,13 @@ chore(scope): maintenance tasks
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [YourGitHub](https://github.com/YOUR_USERNAME)
+- **Your Name** - _Initial work_ -
+  [YourGitHub](https://github.com/YOUR_USERNAME)
 
 ## 🙏 Acknowledgments
 
@@ -364,7 +385,8 @@ For questions or suggestions, please open an issue on GitHub.
 
 ## 📚 Documentation
 
-For detailed documentation, visit the [Wiki](https://github.com/YOUR_USERNAME/ShopmeEcommerce/wiki)
+For detailed documentation, visit the
+[Wiki](https://github.com/YOUR_USERNAME/ShopmeEcommerce/wiki)
 
 ## 🔗 Useful Links
 
@@ -397,12 +419,14 @@ No known issues at this time. Please report any bugs you find.
 ## 💻 System Requirements
 
 ### Minimum Requirements
+
 - CPU: 2 cores
 - RAM: 4GB
 - Storage: 10GB free space
 - OS: Windows 10, macOS 10.14+, or Linux
 
 ### Recommended Requirements
+
 - CPU: 4+ cores
 - RAM: 8GB+
 - Storage: 20GB+ free space
@@ -412,20 +436,21 @@ No known issues at this time. Please report any bugs you find.
 
 ### Common Issues
 
-**Issue**: Port 8080 already in use
-**Solution**: Change the port in `application.properties`:
+**Issue**: Port 8080 already in use **Solution**: Change the port in
+`application.properties`:
+
 ```properties
 server.port=8082
 ```
 
-**Issue**: MySQL connection refused
-**Solution**:
+**Issue**: MySQL connection refused **Solution**:
+
 - Check if MySQL service is running
 - Verify username and password in `application.properties`
 - Check MySQL is listening on port 3306
 
-**Issue**: Build fails
-**Solution**:
+**Issue**: Build fails **Solution**:
+
 ```bash
 mvn clean install -U
 ```
@@ -433,6 +458,7 @@ mvn clean install -U
 ## 📞 Support
 
 If you need help, you can:
+
 - Open an issue on GitHub
 - Check the documentation
 - Contact the development team
