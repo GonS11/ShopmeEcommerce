@@ -1,0 +1,147 @@
+# ========================================
+# ARCHIVOS COMPILADOS Y BUILD
+# ========================================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ========================================
+# IDE - INTELLIJ IDEA
+# ========================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+# ========================================
+# IDE - ECLIPSE
+# ========================================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# ========================================
+# IDE - VISUAL STUDIO CODE
+# ========================================
+.vscode/
+*.code-workspace
+
+# ========================================
+# SISTEMA OPERATIVO
+# ========================================
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ========================================
+# LOGS
+# ========================================
+*.log
+logs/
+*.log.*
+log/
+
+# ========================================
+# ARCHIVOS TEMPORALES
+# ========================================
+*.tmp
+*.temp
+*.swp
+*.swo
+*~.nib
+*.bak
+*.cache
+
+# ========================================
+# MAVEN
+# ========================================
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+dependency-reduced-pom.xml
+
+# ========================================
+# CONFIGURACIONES SENSIBLES
+# ========================================
+# IMPORTANTE: NO subir archivos con contraseñas
+application-local.properties
+application-dev.properties
+application-prod.properties
+*-local.properties
+*.env
+.env
+
+# ========================================
+# ARCHIVOS DE USUARIOS SUBIDOS
+# ========================================
+# Imágenes de productos, usuarios, etc.
+uploads/
+user-photos/
+product-images/
+brand-logos/
+category-images/
+
+# ========================================
+# SPRING BOOT
+# ========================================
+spring-boot-devtools.properties
+
+# ========================================
+# BASES DE DATOS
+# ========================================
+*.db
+*.sqlite
+*.h2.db
+
+# ========================================
+# OTROS
+# ========================================
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ========================================
+# COVERAGE Y TESTING
+# ========================================
+.gradle
+coverage/
+*.gcov
+*.gcda
+*.gcno
+
+# ========================================
+# DOCUMENTACIÓN GENERADA
+# ========================================
+/doc/api/
+/doc/javadoc/
