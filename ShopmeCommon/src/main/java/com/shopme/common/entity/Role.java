@@ -5,6 +5,8 @@ import lombok.*;
 
 @Entity
 @Table(name = "roles")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role extends IdBasedEntity {
@@ -36,13 +38,10 @@ public class Role extends IdBasedEntity {
 
         Role other = (Role) obj;
         if (id == null) {
-            if (other.id != null) {
-                return false;
-            }
-        } else if (!id.equals(other.id)) {
-            return false;
+            return other.id == null;
+        } else {
+            return id.equals(other.id);
         }
-        return true;
     }
 
     @Override
