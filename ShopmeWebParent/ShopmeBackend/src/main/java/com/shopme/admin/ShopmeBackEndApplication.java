@@ -7,10 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan({"com.shopme.common.entity"})
-@EnableJpaRepositories({"com.shopme.admin.repository"})
-public class ShopmeBackendApplication {
-
+public class ShopmeBackEndApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ShopmeBackendApplication.class, args);
+        SpringApplication.run(ShopmeBackEndApplication.class, args);
     }
 }
