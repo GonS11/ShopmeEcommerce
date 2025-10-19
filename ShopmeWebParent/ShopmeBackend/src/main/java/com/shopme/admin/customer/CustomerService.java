@@ -42,41 +42,63 @@ public class CustomerService
                 .orElseThrow(() -> new CustomerNotFoundException("Could not find any customer with ID " + id));
     }
 
-    public List<Country> listAllCountries() {
+    public List<Country> listAllCountries()
+    {
         return countryRepo.findAllByOrderByNameAsc();
     }
 
-    public boolean isEmailUnique(Integer id, String email) {
+    public boolean isEmailUnique(Integer id, String email)
+    {
         Customer existCustomer = customerRepo.findByEmail(email);
-
-        // found another customer having the same email
         return existCustomer == null || Objects.equals(existCustomer.getId(), id);
     }
 
-    public void save(Customer customerInForm) {
-        Customer customerInDB = customerRepo.findById(customerInForm.getId())
-                .orElseThrow(() -> new CustomerNotFoundException("Could not find any customer with ID " + customerInForm.getId()));
+    public void save(Customer customerInForm)
+    {
+        boolean isUpdating = (customerInForm.getId() != null);
 
-        if (!customerInForm.getPassword().isEmpty()) {
-            String encodedPassword = passwordEncoder.encode(customerInForm.getPassword());
-            customerInForm.setPassword(encodedPassword);
-        } else {
-            customerInForm.setPassword(customerInDB.getPassword());
+        if (isUpdating)
+        {
+            Customer customerInDB = customerRepo.findById(customerInForm.getId())
+                    .orElseThrow(() -> new CustomerNotFoundException(
+                            "Could not find any customer with ID " + customerInForm.getId()));
+
+            if (!customerInForm.getPassword().isEmpty())
+            {
+                String encodedPassword = passwordEncoder.encode(customerInForm.getPassword());
+                customerInForm.setPassword(encodedPassword);
+            }
+            else
+            {
+                customerInForm.setPassword(customerInDB.getPassword());
+            }
+
+            customerInForm.setEnabled(customerInDB.isEnabled());
+            customerInForm.setCreatedTime(customerInDB.getCreatedTime());
+            customerInForm.setVerificationCode(customerInDB.getVerificationCode());
+            customerInForm.setAuthenticationType(customerInDB.getAuthenticationType());
+            customerInForm.setResetPasswordToken(customerInDB.getResetPasswordToken());
         }
-
-        customerInForm.setEnabled(customerInDB.isEnabled());
-        customerInForm.setCreatedTime(customerInDB.getCreatedTime());
-        customerInForm.setVerificationCode(customerInDB.getVerificationCode());
-        customerInForm.setAuthenticationType(customerInDB.getAuthenticationType());
-        customerInForm.setResetPasswordToken(customerInDB.getResetPasswordToken());
+        else
+        {
+            encodePassword(customerInForm);
+        }
 
         customerRepo.save(customerInForm);
     }
 
-    public void delete(Integer id) throws CustomerNotFoundException {
+    private void encodePassword(Customer customer)
+    {
+        String encodedPassword = passwordEncoder.encode(customer.getPassword());
+        customer.setPassword(encodedPassword);
+    }
+
+    public void delete(Integer id) throws CustomerNotFoundException
+    {
         Long count = customerRepo.countById(id);
-        if (count == null || count == 0) {
-            throw new CustomerNotFoundException("Could not find any customers with ID " + id);
+        if (count == null || count == 0)
+        {
+            throw new CustomerNotFoundException("Could not find any customer with ID " + id);
         }
 
         customerRepo.deleteById(id);
